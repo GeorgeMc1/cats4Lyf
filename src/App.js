@@ -7,6 +7,7 @@ import {Home} from "./Pages/Home";
 
 function App() {
   const [fullCatList, setFullCatList] = useState([]);
+  const [basketCatList, setBasketCatList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try{
@@ -15,23 +16,27 @@ function App() {
           throw new Error(response.statusText);
         }
         const converted = await response.json();
-        setFullCatList(converted);
+        const newCatList = converted.map(cat => {
+          return {
+            name: faker.name.firstName(),
+            breed: faker.animal.cat(),
+            price: faker.commerce.price(100, 500, 0),
+            url: cat.url,
+            inCart: false
+          };
+        });
+        setFullCatList(newCatList);
       } catch (err){
         console.log(err);
       }
     }
     fetchData();
   }, [])
-  fullCatList.forEach(cat => {
-    cat.name = faker.name.firstName();
-    cat.breed = faker.animal.cat();
-    cat.price = faker.commerce.price(100, 500, 0);
-  });
   return (
     <BrowserRouter>
-      <BasketModal catArray={[{name:"bob", price:100}]}/>
+      <BasketModal catArray={basketCatList} setCatArray={setBasketCatList}/>
       <Routes>
-        <Route path="/" element={<Home catList={fullCatList}/>}/>
+        <Route path="/" element={<Home catList={fullCatList} basketCatList={basketCatList} setBasketCatArray={setBasketCatList}/>}/>
       </Routes>
     </BrowserRouter>
   );
