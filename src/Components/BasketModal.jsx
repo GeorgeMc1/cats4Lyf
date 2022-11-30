@@ -5,7 +5,10 @@ export const BasketModal = () => {
         
     `
     const BasketBox = styled.div`
-        
+        display:flex;
+        max-width: 15%;
+        height:100%;
+        justify-self: right;
     `
     const CheckoutButton = styled.button`
         
