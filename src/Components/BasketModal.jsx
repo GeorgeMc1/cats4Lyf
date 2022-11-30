@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Popup from "reactjs-popup"
+import { useState } from "react"
 export const BasketModal = () => {
     const BasketImage = styled.img`
         
@@ -25,23 +26,35 @@ export const BasketModal = () => {
     const CatPrice = styled.h1`
         
     `
+    const BasketPrice = styled.h1`
+        
+    `
+    const ItemBox = styled.span`
+        
+    `
+    const CatButton = styled.button`
+        
+    `
     const BasketIcon = () => {
         return (
             <BasketImage src=""/>
         )
     }
+    
     const BasketWindow = () => {
         const [totalBasketPrice, setTotalBasketPrice] = useState(0);
+        const [catBasketObjectArray, setCBOA] = useState();
         return (
             <BasketBox>
-                {catBasketObjectArray.map((cat, index) => {
-                    setTotalBasketPrice(totalBasketPrice+=cat.price);
+                {setCBOA(this.catArray)};{{catBasketObjectArray}.map((cat, index) => {
+                    setTotalBasketPrice(totalBasketPrice+cat.price);
                     return (
                         <ItemBox key = {index}>
                             <CatName>{cat.name}</CatName>
                             <CatPic src={cat.pic}/>
                             <CatBreed>{cat.breed}</CatBreed>
                             <CatPrice>{cat.price}</CatPrice>
+                            <CatButton>Remove</CatButton>
                         </ItemBox>)
                 })}
                 <BasketPrice>{totalBasketPrice}</BasketPrice>
