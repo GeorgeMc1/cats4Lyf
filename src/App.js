@@ -6,7 +6,7 @@ import {Home} from "./Pages/Home";
 function App() {
   return (
     <BrowserRouter>
-      <BasketModal catArray={arrayOfCatObjectsForBasket}/>
+      <BasketModal catArray/>
       <Routes>
         <Route path="/" element={<Home/>}/>
       </Routes>

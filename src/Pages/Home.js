@@ -30,12 +30,5 @@ export const Home = () => {
                 )
             })}
         </HomeWrapper>
-        <>
-            {fullCatList.map((cat, i) => {
-                return(
-                    <Cat cat={cat}/>
-                )
-            })}
-        </>
     )
 }
