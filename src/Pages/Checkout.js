@@ -28,7 +28,7 @@ export const Checkout = (props) => {
                     )
                 })}
             </BasketWrapper>
-            <CheckoutPrice onClick={() => {console.log(basketPrice)}}>{"Total Price: £" + basketPrice}</CheckoutPrice>
+            <CheckoutPrice onClick={() => {console.log(basketPrice)}}>{`Total Price: £${basketPrice}`}</CheckoutPrice>
             <Link className="link" to="/"><CheckoutButton onClick={() => setBasket([])}>Confirm Checkout</CheckoutButton></Link>
         </CheckoutWrapper>
     )
