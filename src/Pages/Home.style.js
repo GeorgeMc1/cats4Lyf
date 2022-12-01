@@ -4,5 +4,6 @@ export const HomeWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
-    width: 1000px;
+    width: 100vw;
+    max-width: 1000px;
 `
