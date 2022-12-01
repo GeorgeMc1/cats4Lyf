@@ -34,3 +34,9 @@ export const ColumnWrapper = styled.div`
         width: calc(100% / 3);
     }
 `
+export const CheckoutPrice = styled.p`
+
+`
+export const CheckoutButton = styled.button`
+
+`
