@@ -3,7 +3,6 @@ import Popup from "reactjs-popup";
 import { useEffect } from "react";
 import basketImage from "../Images/catbasket.webp";
 import { Link } from "react-router-dom";
-
 const BasketImage = styled.img`
 height:100px;
 width:100px;
@@ -60,7 +59,6 @@ const CatSec = styled.div`
 const PriceSec = styled.div`
     display: flex;
     align-items: center;
-    /* min-width: 33%; */
 `
 const StyledPopup = styled(Popup)`
     &-content{
