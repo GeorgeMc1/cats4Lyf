@@ -5,6 +5,7 @@ import './App.css';
 import { BasketModal } from "./Components/BasketModal";
 import {Home} from "./Pages/Home";
 import { Checkout } from "./Pages/Checkout";
+import { Navbar } from "./Components/Navbar";
 
 function App() {
   const [fullCatList, setFullCatList] = useState([]);
@@ -36,6 +37,7 @@ function App() {
   }, [])
   return (
     <BrowserRouter>
+      <Navbar/>
       <BasketModal catArray={basketCatList} setCatArray={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>
       <Routes>
         <Route path="/" element={<Home catList={fullCatList} basketCatList={basketCatList} setBasketCatArray={setBasketCatList}/>}/>
