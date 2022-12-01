@@ -4,10 +4,12 @@ import { faker } from '@faker-js/faker';
 import './App.css';
 import { BasketModal } from "./Components/BasketModal";
 import {Home} from "./Pages/Home";
+import { Checkout } from "./Pages/Checkout";
 
 function App() {
   const [fullCatList, setFullCatList] = useState([]);
   const [basketCatList, setBasketCatList] = useState([]);
+  const [totalBasketPrice, setTotalBasketPrice] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try{
@@ -34,9 +36,10 @@ function App() {
   }, [])
   return (
     <BrowserRouter>
-      <BasketModal catArray={basketCatList} setCatArray={setBasketCatList}/>
+      <BasketModal catArray={basketCatList} setCatArray={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>
       <Routes>
         <Route path="/" element={<Home catList={fullCatList} basketCatList={basketCatList} setBasketCatArray={setBasketCatList}/>}/>
+        <Route path="/checkout" element={<Checkout basket={basketCatList} setBasket={setBasketCatList}/>}/>
       </Routes>
     </BrowserRouter>
   );

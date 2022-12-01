@@ -1,4 +1,4 @@
-import { CatWrapper } from "./Cat.style"
+import { CatWrapper } from "./Cat.style";
 export const Cat = (props) => {
     const addToBasket = () => {
         let temp = [...props.basketCatList];

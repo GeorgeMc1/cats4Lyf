@@ -1,8 +1,8 @@
 .App {
   text-align: center;
 }
-#popup-1{
-  width: 80%;
-  min-width: 500px;
-  min-height: 500px;
+.link{
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
 }
