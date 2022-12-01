@@ -1,7 +1,8 @@
-import styled from "styled-components"
-import Popup from "reactjs-popup"
-import { useEffect, useState } from "react"
-import basketImage from "../Images/catbasket.webp"
+import styled from "styled-components";
+import Popup from "reactjs-popup";
+import { useEffect } from "react";
+import basketImage from "../Images/catbasket.webp";
+import { Link } from "react-router-dom";
 
 const BasketImage = styled.img`
 height:100px;
@@ -10,10 +11,8 @@ width:100px;
 const BasketBox = styled.div`
     display:flex;
     flex-flow:column nowrap;
-    /* max-width: 15%; */
-    min-height:100px;
+    min-height: 200px;
     background-color: lightgray;
-    /* position:absolute; */
 `
 const CheckoutButton = styled.button`
     
@@ -63,11 +62,21 @@ const PriceSec = styled.div`
     align-items: center;
     /* min-width: 33%; */
 `
+const StyledPopup = styled(Popup)`
+    &-content{
+        width: 80%;
+        min-width: 500px;
+        min-height: 500px;
+    }
+    &-overlay{
+        background: rgba(0, 0, 0, 0.5);
+    }
+`
 const BasketIcon = () => {
     return (
         <BasketIconBox>
-        <BasketImage src={basketImage}/>
-        <CatName>Open Basket</CatName>
+            <BasketImage src={basketImage}/>
+            <CatName>Open Basket</CatName>
         </BasketIconBox>
     )
 }
@@ -75,7 +84,8 @@ const BasketWindow = (props) => {
     const removeCatFromBasket = (index) => {
         let tempArray = [...props.catArray];
         tempArray.splice(index, 1);
-        props.setCatArray(tempArray)
+        props.setCatArray(tempArray);
+        props.setBasketPrice(0);
     }
     return (
         <BasketBox>
@@ -93,34 +103,32 @@ const BasketWindow = (props) => {
                         </PriceSec>
                     </ItemBox>
         )})}
-            <PriceArea catArray={props.catArray}/>
+            <PriceArea catArray={props.catArray} closeModal={props.closeModal} basketPrice={props.basketPrice} setBasketPrice={props.setBasketPrice}/>
         </BasketBox>
     )
 }
-const PriceArea = (props) => {
-    const [totalBasketPrice, setTotalBasketPrice] = useState(0);
+const PriceArea = ({catArray, basketPrice, closeModal, setBasketPrice}) => {
     useEffect(() => {
         let totalPrice = 0;
-        props.catArray.forEach(element => totalPrice += parseInt(element.price));
-        setTotalBasketPrice(totalPrice);
-    }, [props.catArray])
+        catArray.forEach(element => totalPrice += parseInt(element.price));
+        setBasketPrice(totalPrice);
+    }, [catArray, setBasketPrice])
     return (
         <>
-        <BasketPrice>{props.catArray.length > 0 ? ("Total: £" + totalBasketPrice) : ('Empty Basket')}</BasketPrice>
-        {totalBasketPrice>0 && (<CheckoutButton setCatArray={props.setCatArray} onClick={() => {props.setCatArray([])}}>Checkout</CheckoutButton>)}
+            <BasketPrice>{catArray.length > 0 ? ("Total: £" + basketPrice) : ('Empty Basket')}</BasketPrice>
+            {basketPrice>0 && (<Link className="link" to="/checkout"><CheckoutButton onClick={closeModal}>Checkout</CheckoutButton></Link>)}
         </>
     )
 }
 export const BasketModal = (props) => {
-    
     return(
-        <Popup
-            trigger={<button ><BasketIcon className="button"></BasketIcon></button>}
+        <StyledPopup
+            trigger={<button><BasketIcon></BasketIcon></button>}
             modal
-            nested
             >
-            <BasketWindow catArray={props.catArray} setCatArray={props.setCatArray}/>
-        </Popup>
-        
+            {close => (
+                <BasketWindow catArray={props.catArray} setCatArray={props.setCatArray} closeModal={close} basketPrice={props.basketPrice} setBasketPrice={props.setBasketPrice}/>
+            )}
+        </StyledPopup>
     )
 }
