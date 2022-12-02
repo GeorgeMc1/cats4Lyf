@@ -7,12 +7,10 @@ export const Navbar = () => {
             <Link to ="/">Home</Link>
         </NavbarWrapper>
     )
-    
 }
 
 const NavbarWrapper = styled.nav`
     display: flex;
     justify-content: space-around;
     border: 3px solid gray;
-
 `

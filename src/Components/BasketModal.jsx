@@ -113,7 +113,7 @@ const PriceArea = ({catArray, basketPrice, closeModal, setBasketPrice}) => {
     }, [catArray, setBasketPrice])
     return (
         <>
-            <BasketPrice>{catArray.length > 0 ? ("Total: £" + basketPrice) : ('Empty Basket')}</BasketPrice>
+            <BasketPrice>{catArray.length > 0 ? (`Total: £${basketPrice}`) : ('Empty Basket')}</BasketPrice>
             {basketPrice>0 && (<Link className="link" to="/checkout"><CheckoutButton onClick={closeModal}>Checkout</CheckoutButton></Link>)}
         </>
     )
