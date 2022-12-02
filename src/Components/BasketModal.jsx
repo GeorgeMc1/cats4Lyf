@@ -4,14 +4,18 @@ import { useEffect } from "react";
 import basketImage from "../Images/catbasket.webp";
 import { Link } from "react-router-dom";
 const BasketImage = styled.img`
-height:100px;
-width:100px;
+    height:30px;
+    width:30px;
 `
 const BasketBox = styled.div`
     display:flex;
     flex-flow:column nowrap;
+    align-items: center;
     min-height: 200px;
     background-color: lightgray;
+    border: 3px solid rgb(100,100,100);
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
 `
 const CheckoutButton = styled.button`
     
@@ -48,7 +52,11 @@ const CatButton = styled.button`
     margin: 0 5px;
 `
 const BasketIconBox = styled.div`
-    justify-self:right;
+    display: flex;
+    align-items: center;
+    h1{
+        margin: 0;
+    }
 `
 const CatSec = styled.div`
     display: flex;
@@ -74,7 +82,7 @@ const BasketIcon = () => {
     return (
         <BasketIconBox>
             <BasketImage src={basketImage}/>
-            <CatName>Open Basket</CatName>
+            <h1>Open Basket</h1>
         </BasketIconBox>
     )
 }
@@ -97,7 +105,7 @@ const BasketWindow = (props) => {
                             <CatBreed>{cat.breed}</CatBreed>
                         <PriceSec>
                             <CatPrice>£{cat.price}</CatPrice>
-                            <CatButton onClick={() => {removeCatFromBasket(index)}}>Remove</CatButton>
+                            <CatButton onClick={() => {removeCatFromBasket(index)}}>X</CatButton>
                         </PriceSec>
                     </ItemBox>
         )})}
@@ -121,7 +129,7 @@ const PriceArea = ({catArray, basketPrice, closeModal, setBasketPrice}) => {
 export const BasketModal = (props) => {
     return(
         <StyledPopup
-            trigger={<button><BasketIcon></BasketIcon></button>}
+            trigger={<button className="button"><BasketIcon></BasketIcon></button>}
             modal
             >
             {close => (

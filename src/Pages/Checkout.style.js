@@ -39,8 +39,16 @@ export const ButtonWrapper = styled.div`
     width: 10%;
 `
 export const CheckoutPrice = styled.p`
-
+    font-size: 20px;
+    font-weight: bold;
 `
 export const CheckoutButton = styled.button`
-
+    border: 0;
+    height: 25px;
+    background: rgb(110,110,110);
+    border-radius: 5px;
+    cursor: pointer;
+    :hover{
+        box-shadow: 0 0 10px rgb(110,110,110);
+    }
 `
