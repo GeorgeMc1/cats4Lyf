@@ -1,14 +1,18 @@
-import { CheckoutWrapper, BasketWrapper, ItemWrapper, ColumnWrapper, CheckoutPrice, CheckoutButton } from "./Checkout.style";
-import { useEffect, useState } from "react";
+import { CheckoutWrapper, BasketWrapper, ItemWrapper, ColumnWrapper, CheckoutPrice, CheckoutButton, ButtonWrapper } from "./Checkout.style";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-export const Checkout = (props) => {
-    const [basketPrice, setBasketPrice] = useState(0)
-    let catArray = props.basket, setBasket = props.setBasket;
+export const Checkout = ({basket, setBasketPrice, basketPrice, setBasket}) => {
     useEffect(() => {
-            let totalPrice = 0;
-            catArray.forEach(element => totalPrice += parseInt(element.price));
-            setBasketPrice(totalPrice);console.log(basketPrice)
-        }, [catArray, ])
+        let totalPrice = 0;
+        basket.forEach(element => totalPrice += parseInt(element.price));
+        setBasketPrice(totalPrice);
+    }, [basket, setBasketPrice])
+    const removeCatFromBasket = (index) => {
+        let tempArray = [...basket];
+        tempArray.splice(index, 1);
+        setBasket(tempArray);
+        setBasketPrice(0);
+    }
     return(
         <CheckoutWrapper>
             <h1>Checkout</h1>
@@ -18,12 +22,15 @@ export const Checkout = (props) => {
                     <h2>Breed</h2>
                     <h2>Price</h2>
                 </ColumnWrapper>
-                {props.basket.map((cat, i) => {
+                {basket.map((cat, i) => {
                     return(
                         <ItemWrapper key={i}>
                             <h2>{cat.name}</h2>
                             <h2>{cat.breed}</h2>
                             <h2>£{cat.price}</h2>
+                            <ButtonWrapper>
+                                <button onClick={() => removeCatFromBasket(i)}>X</button>
+                            </ButtonWrapper>
                         </ItemWrapper>
                     )
                 })}

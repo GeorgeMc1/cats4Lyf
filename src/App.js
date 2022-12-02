@@ -42,7 +42,7 @@ function App() {
       <BasketModal catArray={basketCatList} setCatArray={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>
       <Routes>
         <Route path="/" element={<Home catList={fullCatList} basketCatList={basketCatList} setBasketCatArray={setBasketCatList}/>}/>
-        <Route path="/checkout" element={<Checkout basket={basketCatList} setBasket={setBasketCatList}/>}/>
+        <Route path="/checkout" element={<Checkout basket={basketCatList} setBasket={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>}/>
         <Route path="/:id" element={<CatPage/>}/>
       </Routes>
     </BrowserRouter>
