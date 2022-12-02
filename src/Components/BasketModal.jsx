@@ -97,9 +97,14 @@ const StyledPopup = styled(Popup)`
         max-width: 1000px;
         min-width: 500px;
         min-height: 200px;
+        max-height: 80vh;
         background-color: lightgray;
         border: 3px solid rgb(100,100,100);
         box-shadow: 0 0 10px black;
+        overflow-x: scroll;
+        ::-webkit-scrollbar{
+            display: none;
+        }
     }
     &-overlay{
         background: rgba(0, 0, 0, 0.5);
