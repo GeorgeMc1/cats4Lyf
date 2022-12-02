@@ -8,7 +8,6 @@ export const CatWrapper = styled.div`
     height: 260px;
     margin: 5px;
     padding: 5px;
-    background-color: grey;
     box-shadow: 0 0 10px black;
     border-radius: 5px;
     cursor: pointer;

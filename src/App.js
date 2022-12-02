@@ -46,9 +46,28 @@ function App() {
         setFullCatArray={setFullCatList}
       />
       <Routes>
-        <Route path="/" element={<Home catList={fullCatList} basketCatList={basketCatList} setBasketCatArray={setBasketCatList}/>}/>
-        <Route path="/checkout" element={<Checkout basket={basketCatList} setBasket={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>}/>
-        <Route path="/:id" element={<CatPage/>}/>
+        <Route 
+        path="/" 
+        element={<Home 
+          setCatList={setFullCatList}
+          catList={fullCatList} 
+          basketCatList={basketCatList} 
+          setBasketCatArray={setBasketCatList}/>}
+        />
+        <Route 
+          path="/checkout" 
+          element={<Checkout 
+            basket={basketCatList} 
+            setBasket={setBasketCatList} 
+            basketPrice={totalBasketPrice} 
+            setBasketPrice={setTotalBasketPrice}
+            fullCatList={fullCatList}
+            setFullCatList={setFullCatList}
+        />}/>
+        <Route 
+          path="/:id" 
+          element={<CatPage/>}
+        />
       </Routes>
     </BrowserRouter>
   );
