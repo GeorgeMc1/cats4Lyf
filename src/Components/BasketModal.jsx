@@ -89,14 +89,14 @@ const BasketIcon = () => {
 const BasketWindow = (props) => {
     const removeCatFromBasket = (index) => {
         let tempArray = [...props.catArray];
-        let tempFullArray = [...props.fullCatList];
+        let tempFullArray = props.fullCatArray;tempFullArray = [...tempFullArray];
         tempFullArray.forEach(i => {
             if (i.url === tempArray[index].url){
-                !i.inCart;
+                i.inCart = !i.inCart;
             }
         })
 
-        props.setFullCatList(tempFullArray);
+        props.setFullCatArray(tempFullArray);
 
         tempArray.splice(index, 1);
         props.setCatArray(tempArray);
@@ -142,7 +142,15 @@ export const BasketModal = (props) => {
             modal
             >
             {close => (
-                <BasketWindow catArray={props.catArray} setCatArray={props.setCatArray} closeModal={close} basketPrice={props.basketPrice} setBasketPrice={props.setBasketPrice}/>
+                <BasketWindow 
+                catArray={props.catArray} 
+                setCatArray={props.setCatArray} 
+                closeModal={close} 
+                basketPrice={props.basketPrice} 
+                setBasketPrice={props.setBasketPrice}
+                fullCatArray={props.fullCatList}
+                setFullCatArray={props.setFullCatList}
+                />
             )}
         </StyledPopup>
     )
