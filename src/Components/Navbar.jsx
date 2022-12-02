@@ -15,7 +15,6 @@ export const Navbar = (props) => {
                 setBasketPrice={props.setBasketPrice}/>
         </NavbarWrapper>
     )
-    
 }
 
 const NavbarWrapper = styled.nav`
@@ -24,6 +23,8 @@ const NavbarWrapper = styled.nav`
     align-items: center;
     border: 3px solid gray;
     border-radius: 5px;
+    max-width: 1000px;
+    margin: 0 auto;
     .button{
         border: 0;
         background: 0;
