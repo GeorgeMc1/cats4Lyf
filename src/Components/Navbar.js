@@ -6,9 +6,16 @@ export const Navbar = (props) => {
     return(
         <NavbarWrapper>
             <StyledLink className="link" to ="/"><button>Home</button></StyledLink>
-            <BasketModal catArray={props.catArray} setCatArray={props.setCatArray} basketPrice={props.basketPrice} setBasketPrice={props.setBasketPrice}/>
+            <BasketModal 
+                setFullCatList={props.setFullCatArray}
+                fullCatList={props.fullCatArray}
+                catArray={props.catArray} 
+                setCatArray={props.setCatArray} 
+                basketPrice={props.basketPrice} 
+                setBasketPrice={props.setBasketPrice}/>
         </NavbarWrapper>
     )
+    
 }
 
 const NavbarWrapper = styled.nav`

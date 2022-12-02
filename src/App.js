@@ -37,7 +37,14 @@ function App() {
   }, [])
   return (
     <BrowserRouter>
-      <Navbar catArray={basketCatList} setCatArray={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>
+      <Navbar 
+        catArray={basketCatList} 
+        setCatArray={setBasketCatList} 
+        basketPrice={totalBasketPrice} 
+        setBasketPrice={setTotalBasketPrice}
+        fullCatArray={fullCatList}
+        setFullCatArray={setFullCatList}
+      />
       <Routes>
         <Route path="/" element={<Home catList={fullCatList} basketCatList={basketCatList} setBasketCatArray={setBasketCatList}/>}/>
         <Route path="/checkout" element={<Checkout basket={basketCatList} setBasket={setBasketCatList} basketPrice={totalBasketPrice} setBasketPrice={setTotalBasketPrice}/>}/>
