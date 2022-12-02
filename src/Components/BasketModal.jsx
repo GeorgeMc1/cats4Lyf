@@ -3,9 +3,33 @@ import Popup from "reactjs-popup";
 import { useEffect } from "react";
 import basketImage from "../Images/catbasket.webp";
 import { Link } from "react-router-dom";
-const BasketImage = styled.img`
+import number1 from "../Images/number1.png"
+import number2 from "../Images/number2.png"
+import number3 from "../Images/number3.png"
+import number4 from "../Images/number4.png"
+import number5 from "../Images/number5.png"
+import number6 from "../Images/number6.png"
+import number7 from "../Images/number7.png"
+import number8 from "../Images/number8.png"
+import number9 from "../Images/number9.png"
+import plus from "../Images/plus.png"
+const numberArray = [" ", number1, number2, number3, number4, number5, number6, number7, number8, number9, plus]
+
+
+const BasketImage = styled.div`
+    background-size: cover;
+    background-repeat: no-repeat;
     height:30px;
     width:30px;
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+    div{
+        min-height:75%;
+        min-width:75%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    };
 `
 const BasketBox = styled.div`
     display:flex;
@@ -78,11 +102,17 @@ const StyledPopup = styled(Popup)`
         background: rgba(0, 0, 0, 0.5);
     }
 `
-const BasketIcon = () => {
+const BasketIcon = (props) => {
+    let numberImage;
+    if (props.catArray.length<10){numberImage = numberArray[props.catArray.length]}
+    else {numberImage=numberArray[10]}
+    
+    
     return (
         <BasketIconBox>
-            <BasketImage src={basketImage}/>
-            <h1>Open Basket</h1>
+                <BasketImage style={{backgroundImage: `url(${basketImage})`}}>
+                    <div style={{backgroundImage: `url(${numberImage})`}}/>
+                </BasketImage>
         </BasketIconBox>
     )
 }
@@ -95,9 +125,7 @@ const BasketWindow = (props) => {
                 i.inCart = !i.inCart;
             }
         })
-
         props.setFullCatArray(tempFullArray);
-
         tempArray.splice(index, 1);
         props.setCatArray(tempArray);
         props.setBasketPrice(0);
@@ -138,7 +166,7 @@ const PriceArea = ({catArray, basketPrice, closeModal, setBasketPrice}) => {
 export const BasketModal = (props) => {
     return(
         <StyledPopup
-            trigger={<button className="button"><BasketIcon></BasketIcon></button>}
+            trigger={<button className="button"><BasketIcon catArray={props.catArray}></BasketIcon></button>}
             modal
             >
             {close => (

@@ -29,7 +29,7 @@ const NavbarWrapper = styled.nav`
         background: 0;
         cursor: pointer;
         :hover{
-            background-color: rgb(128,128,128);
+            /* background-color: rgb(128,128,128); */
             box-shadow: -5px 0 10px rgb(128,128,128);
         }
     }
