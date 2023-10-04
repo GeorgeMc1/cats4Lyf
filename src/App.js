@@ -1,7 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useState, useEffect} from "react";
 import { faker } from '@faker-js/faker';
-import './App.css';
 import {Home} from "./Pages/Home";
 import { Checkout } from "./Pages/Checkout";
 import { Navbar } from "./Components/Navbar";

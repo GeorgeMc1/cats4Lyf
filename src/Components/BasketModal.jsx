@@ -119,7 +119,7 @@ const BasketIcon = (props) => {
 const BasketWindow = (props) => {
     const removeCatFromBasket = (index) => {
         let tempArray = [...props.catArray];
-        let tempFullArray = props.fullCatArray;tempFullArray = [...tempFullArray];
+        let tempFullArray = [...props.fullCatArray];
         tempFullArray.forEach(i => {
             if (i.url === tempArray[index].url){
                 i.inCart = !i.inCart;

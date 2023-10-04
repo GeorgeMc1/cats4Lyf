@@ -1,7 +1,7 @@
 import { CheckoutWrapper, BasketWrapper, ItemWrapper, ColumnWrapper, CheckoutPrice, CheckoutButton, ButtonWrapper } from "./Checkout.style";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-export const Checkout = ({basket, setBasketPrice, basketPrice, setBasket}) => {
+export const Checkout = ({basket, setBasketPrice, basketPrice, setBasket, setFullCatList, fullCatList}) => {
     useEffect(() => {
         let totalPrice = 0;
         basket.forEach(element => totalPrice += parseInt(element.price));
@@ -9,6 +9,13 @@ export const Checkout = ({basket, setBasketPrice, basketPrice, setBasket}) => {
     }, [basket, setBasketPrice])
     const removeCatFromBasket = (index) => {
         let tempArray = [...basket];
+        let tempFullArray = [...fullCatList];
+        tempFullArray.forEach(i => {
+            if (i.url === tempArray[index].url){
+                i.inCart = !i.inCart;
+            }
+        })
+        setFullCatList(tempFullArray);
         tempArray.splice(index, 1);
         setBasket(tempArray);
         setBasketPrice(0);
