@@ -36,10 +36,8 @@ const BasketBox = styled.div`
     flex-flow:column nowrap;
     align-items: center;
     min-height: 200px;
-    background-color: lightgray;
-    border: 3px solid rgb(100,100,100);
     border-radius: 5px;
-    box-shadow: 0 0 10px black;
+    
 `
 const CheckoutButton = styled.button`
     
@@ -49,7 +47,8 @@ const CatName = styled.h1`
     margin: 0 5px;
 `
 const CatPic = styled.img`
-    width:50%;
+    max-width:50%;
+    max-height: 100px;
 `
 const CatBreed = styled.h1`
     font-size: 24px;
@@ -94,9 +93,18 @@ const PriceSec = styled.div`
 `
 const StyledPopup = styled(Popup)`
     &-content{
-        width: 80%;
+        width: 80vw;
+        max-width: 1000px;
         min-width: 500px;
-        min-height: 500px;
+        min-height: 200px;
+        max-height: 80vh;
+        background-color: lightgray;
+        border: 3px solid rgb(100,100,100);
+        box-shadow: 0 0 10px black;
+        overflow-x: scroll;
+        ::-webkit-scrollbar{
+            display: none;
+        }
     }
     &-overlay{
         background: rgba(0, 0, 0, 0.5);
